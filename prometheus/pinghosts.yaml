@@ -1,8 +1,7 @@
 - targets:  # url;humanname;routing;switch
-    - http://google.com;google.com;external;internetbox
-    - http://github.com;github.com;external;internetbox
-    - https://blackdata.xam.dk:5001;blackdata.xam.dk;external;internetbox
-    - http://192.168.1.1;internetbox;local;internetbox
-    - http://192.168.1.42;blackdata;local;orbirouter-attic
-    - http://192.168.1.101;orbirouter;local;orbirouter
+    - http://google.com;google.com;external;tcom
+    - http://github.com;github.com;external;tcom
+    - http://192.168.1.1;tcom;local;mikrotikw
+    - http://192.168.88.1;mikrotikw;local;mikrotikw
+    - http://bracnabanka.local:5000;bracnabanka;local;mikrotikw
 

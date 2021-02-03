@@ -10,7 +10,7 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.0.0
+    image: prom/prometheus:v2.24.1
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -69,18 +69,6 @@ services:
     networks:
       - back-tier
 
-  sonos:
-    tty: true
-    stdin_open: true
-    expose: 
-      - 1915
-    ports:
-      - 1915:1915
-    image: maxandersen/sonos_exporter
-    command:
-      - '--address=0.0.0.0:1915'
-    network_mode: host
-
   nodeexp:
     privileged: true
     image: prom/node-exporter
@@ -96,6 +84,16 @@ services:
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    networks:
+      - back-tier
+
+  ip:
+    tty: true
+    stdin_open: true
+    expose:
+      - 8000
+    image: ip_as_a_number
+    restart: always
     networks:
       - back-tier
 
